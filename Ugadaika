@@ -1,0 +1,60 @@
+import random
+
+print("Добро пожаловать в числовую угадайку")
+
+
+def is_valid(player_number):
+    if player_number.isdigit() and int(a) <= int(player_number) <= int(b):
+        return True
+    else:
+        return False
+
+
+def game():
+    counter = 0
+    flag1 = False
+    while flag1 == False:
+        z = input(f"Напишите число от {a} до {b} ")
+        is_valid(z)
+        if is_valid(z) == True:
+            if str(mystery) == z:
+                counter += 1
+                print(f"Поздравляю вы угадали с {counter} раза ")
+                print("Спасибо, что играли в числовую угадайку.")
+                flag1 = True
+            elif int(mystery) > int(z):
+                counter += 1
+                print("Ваше число меньше :( ")
+            elif int(mystery) < int(z):
+                counter += 1
+                print("Ваше число больше :( ")
+
+        else:
+            print("Вы ввели некорректные данные ")
+
+
+while True:
+    menu = input("начнем игру ? Да/Нет ")
+    if menu.lower() == "да":
+        a = input("Укажите минимальное число для угадайки ")
+        if a.isdigit()==False:
+            print("Введи число")
+            continue
+        else:
+            a=int(a)
+        b = input("Укажите максимальное число для угадайки ")
+        if b.isdigit()==False:
+            print("Введи число")
+            continue
+        else:
+             b=int(b)
+        if a>=b:
+            print("Вы ввели некорректные данные")
+            continue
+        mystery = random.randint(a, b)
+        game()
+    elif menu.lower() == "нет":
+        print("Куда, а поиграть ? ")
+        break
+    else:
+        print("Извини, я не понял что ты хочешь  ")
